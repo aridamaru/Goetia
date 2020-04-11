@@ -4,7 +4,7 @@ using System.Linq;
 
 using Goetia.Persons;
 
-namespace Goetia.BattleProcess
+namespace Goetia.GameProcess
 {
     public class Battle
     {

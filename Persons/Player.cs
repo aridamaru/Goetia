@@ -24,6 +24,7 @@ namespace Goetia.Persons
         private List<Item> PlayerInventory { get; set; }
         //Skills
         private List<Skill> PlayerSkills { get; set; }
+
         public Player(int id, string name) : base(id, name)
         {
             PlayerCurrentLevel = 1;
@@ -65,6 +66,8 @@ namespace Goetia.Persons
         {
             this.PlayerInventory.Add(item);
         }
+
+        //Calculating  total damage of equipped items
         public int EquipmentDamage()
         {
             var damage = 0;
