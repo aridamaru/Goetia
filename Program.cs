@@ -17,78 +17,34 @@ namespace Goetia
     {
         static void Main(string[] args)
         {
-            var game = new Game()
-            {
-                Arsenal = new List<Weapon>()
+            //arsenal & skillBox data should be taken from DbContext
+            var arsenal = new List<Weapon>()
                     {
-                        new Weapon(1, "Jamadhar", 110),
-                        new Weapon(2, "Gladius", 120),
-                        new Weapon(3, "Flamberg", 130) ,
-                        new Weapon(4, "ZweiHander", 140)
-                    },
-
-                Skills = new List<Skill>()
+                        new Weapon(1, "Jamadhar","Katar", 110),
+                        new Weapon(2, "Gladius", "Dagger", 120),
+                        new Weapon(3, "Flamberg","One-Handed sword", 130) ,
+                        new Weapon(4, "ZweiHander","Two-Handed sword", 140)
+                    };
+            var skillBox = new List<Skill>()
                     {
                         new PhysicalSkill(1, "Bash", 100),
                         new PhysicalSkill(2, "Assault", 110),
                         new PhysicalSkill(3, "Grimtooth", 90)
-                    }
-            };
+                    };
+            
+            //Initialize new Game instance with int identifier as parameter
+            var game = new Game(1);
 
-            Console.WriteLine("Welcome to Goetia!");
-            //Players Introduction
-
+            game.Run();
+            game.InitializeEnvironment(arsenal, skillBox);
             game.CreatePlayers();
+            game.ChooseWeapon();
 
+            //Initialize new Battle instance with List<Player>  as parameter
+            var battle = new Battle(game.Players);
 
-
-
-            Console.WriteLine("First player - introduce yorself!");
-            Console.WriteLine("What is your name first player?");
-            var firstPlayer = new Player(1, Console.ReadLine());
-
-            Console.WriteLine("Fine.Let's continue introduction process..");
-            Console.WriteLine("What is your name second player?");
-            var secondPlayer = new Player(2, Console.ReadLine());
-
-            Console.WriteLine("Ok.{0} choose your weapon from list..", firstPlayer.Name);
-            Console.WriteLine("Id : Name");
-            foreach (var weapon in game.Arsenal)
-            {
-                Console.WriteLine("{0}  : {1}", weapon.Id, weapon.Name);
-            }
-
-            Console.WriteLine("Enter Id...");
-            var chosenItemFirst = Int32.Parse(Console.ReadLine());
-            firstPlayer.EquipItem(arsenal.Where(o => o.Id == chosenItemFirst).FirstOrDefault());
-
-            Console.WriteLine("Now it's your turn {0}! Choose your weapon from list..", secondPlayer.Name);
-            Console.WriteLine("Id : Name");
-            foreach (var weapon in arsenal)
-            {
-                Console.WriteLine("{0}  : {1}", weapon.Id, weapon.Name);
-            }
-            Console.WriteLine("Enter Id..");
-            var chosenItemSecond = Int32.Parse(Console.ReadLine());
-            secondPlayer.EquipItem(arsenal.Where(o => o.Id == chosenItemSecond).FirstOrDefault());
-
-            Console.WriteLine("Fine. Are you ready for Battle?");
-            Console.WriteLine("If so type yes");
-            Console.WriteLine("{0} : Do you want to start?", firstPlayer.Name);
-            var firstPlayerAprovement = Console.ReadLine();
-            Console.WriteLine("{0} : Do you want to start?", secondPlayer.Name);
-            var secondPlayerAprovement = Console.ReadLine();
-
-            List<Player> battlers = new List<Player>();
-            battlers.Add(firstPlayer);
-            battlers.Add(secondPlayer);
-
-            if (firstPlayerAprovement == "yes" && secondPlayerAprovement == "yes")
-            {
-                var gendalt = new Battle(battlers);
-                gendalt.StartBattle();
-                gendalt.ShowWinner();
-            }
+            battle.StartBattle();
+            battle.ShowWinner();
 
             Console.ReadKey();
         }
