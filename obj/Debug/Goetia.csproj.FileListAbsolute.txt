@@ -1,7 +1,0 @@
-D:\Practice\Goetia\obj\Debug\Goetia.csprojAssemblyReference.cache
-D:\Practice\Goetia\bin\Debug\Goetia.exe.config
-D:\Practice\Goetia\bin\Debug\Goetia.exe
-D:\Practice\Goetia\bin\Debug\Goetia.pdb
-D:\Practice\Goetia\obj\Debug\Goetia.csproj.CoreCompileInputs.cache
-D:\Practice\Goetia\obj\Debug\Goetia.exe
-D:\Practice\Goetia\obj\Debug\Goetia.pdb

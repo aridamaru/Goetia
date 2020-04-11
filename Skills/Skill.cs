@@ -8,14 +8,14 @@ namespace Goetia.Skills
 {
     public abstract class Skill
     {
-        private int _skillId { get; set; }
-        private string _skillName { get; set; }
+        private int SkillId { get; set; }
+        private string SkillName { get; set; }
         public Skill(int id, string name)
         {
-            _skillId = id;
-            _skillName = name;
+            SkillId = id;
+            SkillName = name;
         }
-        public int GetSkillId() => this._skillId;
-        public string GetSkillName() => this._skillName;
+        public int GetSkillId() => this.SkillId;
+        public string GetSkillName() => this.SkillName;
     }
 }

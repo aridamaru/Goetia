@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BattleProcess\Battle.cs" />
+    <Compile Include="GameProcess\Battle.cs" />
     <Compile Include="CharacterDetails\PlayerAttributes.cs" />
     <Compile Include="CharacterDetails\Profession.cs" />
+    <Compile Include="GameProcess\Game.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\IWeapon.cs" />
     <Compile Include="Items\IWearable.cs" />

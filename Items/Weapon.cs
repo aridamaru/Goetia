@@ -10,12 +10,16 @@ namespace Goetia.Items
 {
     public class Weapon : Item, IWearable, IWeapon
     {
+        public string WeaponType { get; set; }
         private int WeaponDamage { get; set; }
+
+
+
         public string Slot { get; set; } = "Right Hand";
 
-        public Weapon(int id, string name, int weaponDamage) : base(id, name)
+        public Weapon(int id, string name, string type, int weaponDamage) : base(id, name)
         {
-             
+            WeaponType = type;
             WeaponDamage = weaponDamage >= 0 ? weaponDamage : 0;
         }
         public int GetDamageAmount() => WeaponDamage;
