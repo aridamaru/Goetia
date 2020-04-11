@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Goetia.Persons;
-using Goetia.BattleProcess;
+using Goetia.GameProcess;
 using Goetia.Items;
 using Goetia.Skills;
 using Goetia.CharacterDetails;
@@ -17,20 +17,32 @@ namespace Goetia
     {
         static void Main(string[] args)
         {
-            var arsenal = new List<Weapon>() 
+            var game = new Game()
             {
-                new Weapon(1, "Jamadhar", 110),
-                new Weapon(2, "Gladius", 120),
-                new Weapon(3, "Flamberg", 130) ,
-                new Weapon(4, "ZweiHander", 140) 
+                Arsenal = new List<Weapon>()
+                    {
+                        new Weapon(1, "Jamadhar", 110),
+                        new Weapon(2, "Gladius", 120),
+                        new Weapon(3, "Flamberg", 130) ,
+                        new Weapon(4, "ZweiHander", 140)
+                    },
+
+                Skills = new List<Skill>()
+                    {
+                        new PhysicalSkill(1, "Bash", 100),
+                        new PhysicalSkill(2, "Assault", 110),
+                        new PhysicalSkill(3, "Grimtooth", 90)
+                    }
             };
 
-            var firstSkill = new PhysicalSkill(1, "Bash", 100);
-            var secondSKill = new PhysicalSkill(2, "Assault", 110);
-
             Console.WriteLine("Welcome to Goetia!");
-
             //Players Introduction
+
+            game.CreatePlayers();
+
+
+
+
             Console.WriteLine("First player - introduce yorself!");
             Console.WriteLine("What is your name first player?");
             var firstPlayer = new Player(1, Console.ReadLine());
@@ -41,7 +53,7 @@ namespace Goetia
 
             Console.WriteLine("Ok.{0} choose your weapon from list..", firstPlayer.Name);
             Console.WriteLine("Id : Name");
-            foreach(var weapon in arsenal)
+            foreach (var weapon in game.Arsenal)
             {
                 Console.WriteLine("{0}  : {1}", weapon.Id, weapon.Name);
             }
