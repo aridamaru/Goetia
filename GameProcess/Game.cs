@@ -16,7 +16,7 @@ namespace Goetia.GameProcess
         public int GameId { get; set; }
 
         //Available weapons in current game
-        public List<Weapon> Arsenal { get; set; }
+        public List<IWearable> Arsenal { get; set; }
 
         //Available skills in current game
         public List<Skill> SkillBox { get; set; }
@@ -27,13 +27,13 @@ namespace Goetia.GameProcess
         public Game(int id)
         {
             GameId = id;
-            Arsenal = new List<Weapon>();
+            Arsenal = new List<IWearable>();
             SkillBox = new List<Skill>();
             Players = new List<Player>();
 
         }
 
-        public void InitializeEnvironment(List<Weapon> arsenal, List<Skill> skillBox)
+        public void InitializeEnvironment(List<IWearable> arsenal, List<Skill> skillBox)
         {
             Arsenal = arsenal;
             SkillBox = skillBox;
@@ -63,8 +63,10 @@ namespace Goetia.GameProcess
                     Console.WriteLine("{0}  : {1}", weapon.Id, weapon.Name);
                 }
                 Console.WriteLine("Enter Id..");
+
                 var chosenItem = Int32.Parse(Console.ReadLine());
-                player.EquipItem(Arsenal.Where(o => o.Id == chosenItem).FirstOrDefault());
+                player.PickUpItem((Item)Arsenal.Where(o => o.Id == chosenItem).FirstOrDefault());
+                player.EquipItem((IWearable)player.GetInventory().Where(o => o.Id == chosenItem).FirstOrDefault());
             }
         }
 
@@ -74,6 +76,7 @@ namespace Goetia.GameProcess
             ///
             ///
             Console.WriteLine("Welcome to Goetia!");
+            ///
             ///
             
         }
