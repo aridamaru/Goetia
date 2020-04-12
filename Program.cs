@@ -18,7 +18,7 @@ namespace Goetia
         static void Main(string[] args)
         {
             //arsenal & skillBox data should be taken from DbContext
-            var arsenal = new List<Weapon>()
+            var arsenal = new List<IWearable>()
                     {
                         new Weapon(1, "Jamadhar","Katar", 110),
                         new Weapon(2, "Gladius", "Dagger", 120),
@@ -32,7 +32,7 @@ namespace Goetia
                         new PhysicalSkill(3, "Grimtooth", 90)
                     };
             
-            //Initialize new Game instance with int identifier as parameter
+            //Initialize new Game instance with 'int' identifier as parameter
             var game = new Game(1);
 
             game.Run();
@@ -40,7 +40,7 @@ namespace Goetia
             game.CreatePlayers();
             game.ChooseWeapon();
 
-            //Initialize new Battle instance with List<Player>  as parameter
+            //Initialize new Battle instance with 'List<Player>' as parameter
             var battle = new Battle(game.Players);
 
             battle.StartBattle();

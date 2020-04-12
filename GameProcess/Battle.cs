@@ -8,18 +8,18 @@ namespace Goetia.GameProcess
 {
     public class Battle
     {
-        private string _winnerName { get; set; } 
+        private string WinnerName { get; set; } 
         private bool IsWinnerExist { get; set; } = false;
-        private List<Player> _participatingPlayers { get; set; }
+        private List<Player> ParticipatingPlayers { get; set; }
         public Battle(List<Player> players)
         {
-            _participatingPlayers = players;
+            ParticipatingPlayers = players;
         }
 
         public void StartBattle()
         {
             List<int> damageList = new List<int>();
-            foreach (var player in _participatingPlayers)
+            foreach (var player in ParticipatingPlayers)
             {
                 damageList.Add(player.TotalDamage());
             }
@@ -30,7 +30,7 @@ namespace Goetia.GameProcess
             else
             {
                 IsWinnerExist = true;
-                _winnerName = _participatingPlayers.Where(o => o.TotalDamage() == damageList.Max())
+                WinnerName = ParticipatingPlayers.Where(o => o.TotalDamage() == damageList.Max())
                                                    .Select(o => o.Name).First();
             }
         }
@@ -38,7 +38,7 @@ namespace Goetia.GameProcess
         {
             if (IsWinnerExist)
             {
-                Console.WriteLine("Winner is {0}! Congratulations!", _winnerName);
+                Console.WriteLine("Winner is {0}! Congratulations!", WinnerName);
             }
             else
             { 

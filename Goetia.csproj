@@ -47,6 +47,7 @@
     <Compile Include="CharacterDetails\PlayerAttributes.cs" />
     <Compile Include="CharacterDetails\Profession.cs" />
     <Compile Include="GameProcess\Game.cs" />
+    <Compile Include="HandForWeapon\Add.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\IWeapon.cs" />
     <Compile Include="Items\IWearable.cs" />
