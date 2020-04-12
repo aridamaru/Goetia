@@ -32,7 +32,7 @@ namespace Goetia.Persons
 
             PlayerProfession = new Profession();
 
-            PlayerNativeDamage = PlayerAttributes.GetNativeDamage(PlayerCurrentLevel,PlayerProfession);
+            PlayerNativeDamage = PlayerAttributes.GetNativeDamage(PlayerCurrentLevel, PlayerProfession);
 
             //Amount of Players Health and Mana points depends on profession and current level
             PlayerHealthPointsTotal = PlayerAttributes.GetMaxHPAmount(PlayerCurrentLevel, PlayerProfession);
@@ -49,6 +49,7 @@ namespace Goetia.Persons
 
         public void EquipItem(IWearable item)
         {
+
             var slot = item.Slot;
 
             if (!PlayerEquipment.ContainsKey(slot))
@@ -61,12 +62,17 @@ namespace Goetia.Persons
             }
         }
 
+
         //This method must be refactored after implementation of Item.Weight and Inventory.MaxSize properties
         public void PickUpItem(Item item)
         {
             this.PlayerInventory.Add(item);
         }
 
+        public List<Item> GetInventory()
+        {
+            return PlayerInventory;
+        }
         //Calculating  total damage of equipped items
         public int EquipmentDamage()
         {
@@ -85,6 +91,7 @@ namespace Goetia.Persons
         }
 
         public int TotalDamage() => this.EquipmentDamage() + this.PlayerNativeDamage;
+
         public void Attack()
         {
             //do smth

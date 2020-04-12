@@ -8,6 +8,8 @@ namespace Goetia.Items
 {
     public interface IWearable
     {
+        int Id { get; set; }
+        string Name { get; set; }
         string Slot { get; set; }
     }
 }
